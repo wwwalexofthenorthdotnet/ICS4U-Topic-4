@@ -10,8 +10,9 @@ namespace ICS4U_Topic_4
     {
         static void Main(string[] args)
         {
-            //RandomIntegers();
+            RandomIntegers();
             DiceRoller();
+            RandomDecimal();
         }
 
         public static void RandomIntegers()
@@ -118,17 +119,93 @@ namespace ICS4U_Topic_4
 
                     Console.ReadLine();
 
-                    Console.WriteLine("\n");
+                }
+            }
+        }
+
+        public static void RandomDecimal()
+        {
+            Random generator = new Random();
+            double maxValue = 0;
+            double minValue = 0;
+
+            int roundValue = 0;
+
+            bool maxValueValid = false;
+            bool minValueValid = false;
+            bool roundValueValid = false;
+
+            double randomNumber = 0;
+
+            // Title
+
+            Console.WriteLine($"Random Decimal");
+            Console.WriteLine();
+
+            // Enter Values
+
+            while (!maxValueValid)
+            {
+                Console.Write("Enter the maximum value : ");
 
 
-   
+                if (!Double.TryParse(Console.ReadLine(), out maxValue))
+                {
+                    Console.WriteLine("Invalid input.");
+                    continue;
+                }
+                else
+                {
+                    maxValueValid = true;
                 }
 
-
-
-
-
             }
+
+            Console.Clear();
+
+            while (!minValueValid)
+            {
+                Console.Write("Enter the minimum value : ");
+                if (!Double.TryParse(Console.ReadLine(), out minValue))
+                {
+                    Console.WriteLine("Invalid input.");
+                    continue;
+                }
+                else if (minValue > maxValue)
+                {
+                    Console.WriteLine("Minimum value cannot be greater than maximum value.");
+                    continue;
+                }
+                else
+                {
+                    minValueValid = true;
+                }
+            }
+
+            Console.Clear();
+
+            while (!roundValueValid)
+            {
+                Console.Write("How many decimal points? : ");
+                if (!Int32.TryParse(Console.ReadLine(), out roundValue))
+                {
+                    Console.WriteLine("Invalid input.");
+                    continue;
+                }
+                else if (roundValue <= 0)
+                {
+                    Console.WriteLine("You Can't Round to under 0 decimal points.");
+                    continue;
+                }
+                else
+                {
+                    roundValueValid = true;
+                }
+            }
+
+            randomNumber = (maxValue - minValue) * generator.NextDouble() + minValue;
+
+            Console.WriteLine($"Your random number is : {Math.Round(randomNumber, roundValue)}");
         }
     }
 }
