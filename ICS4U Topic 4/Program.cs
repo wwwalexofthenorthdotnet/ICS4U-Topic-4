@@ -10,10 +10,13 @@ namespace ICS4U_Topic_4
     {
         static void Main(string[] args)
         {
-            RandomIntegers();
+            //RandomIntegers();
+            DiceRoller();
         }
 
         public static void RandomIntegers()
+
+
         {
             Random generator = new Random();
             int maxValue = 0;
@@ -21,6 +24,8 @@ namespace ICS4U_Topic_4
 
             bool maxValueValid = false;
             bool minValueValid = false;
+
+            int randomNumber = 0;
 
             // Title
 
@@ -31,8 +36,8 @@ namespace ICS4U_Topic_4
 
             while (!maxValueValid)
             {
-                Console.WriteLine("Enter the maximum value: ");
-               
+                Console.Write("Enter the maximum value (Decimal Invalid): ");
+
 
                 if (!Int32.TryParse(Console.ReadLine(), out maxValue))
                 {
@@ -41,14 +46,89 @@ namespace ICS4U_Topic_4
                 }
                 else
                 {
-
-                
-                
+                    maxValueValid = true;
                 }
 
             }
 
+            Console.Clear();
+
+            while (!minValueValid)
+            {
+                Console.Write("Enter the minimum value (Decimal Invalid): ");
+                if (!Int32.TryParse(Console.ReadLine(), out minValue))
+                {
+                    Console.WriteLine("Invalid input.");
+                    continue;
+                }
+                else if (minValue > maxValue)
+                {
+                    Console.WriteLine("Minimum value cannot be greater than maximum value.");
+                    continue;
+                }
+                else
+                {
+                    minValueValid = true;
+                }
+            }
+
+            Console.Clear();
+
+            randomNumber = generator.Next(minValue, maxValue + 1);
+
+            Console.WriteLine($"Your random number is : {randomNumber}");
+
         }
 
+        public static void DiceRoller()
+        {
+            Random generator = new Random();
+
+            int dice1 = 0;
+            int dice2 = 0;
+
+            bool finish = false;
+            bool start = false;
+
+            string input = "";
+
+
+            // Title
+
+            Console.WriteLine("Dice Roller");
+            Console.WriteLine();
+
+            while (!finish)
+            {
+                Console.Write("Press any key to roll the dice: ");
+                Console.ReadKey();
+                start = true;
+
+                while (start)
+                {
+
+                    dice1 = generator.Next(1, 7);
+                    dice2 = generator.Next(1, 7);
+
+                    Console.Clear();
+
+                    Console.WriteLine($"You rolled a {dice1} and a {dice2}.");
+
+                    Console.WriteLine();
+
+                    Console.ReadLine();
+
+                    Console.WriteLine("\n");
+
+
+   
+                }
+
+
+
+
+
+            }
+        }
     }
 }
