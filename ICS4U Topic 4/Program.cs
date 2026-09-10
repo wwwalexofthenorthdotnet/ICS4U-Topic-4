@@ -13,6 +13,8 @@ namespace ICS4U_Topic_4
             RandomIntegers();
             DiceRoller();
             RandomDecimal();
+
+            
         }
 
         public static void RandomIntegers()
