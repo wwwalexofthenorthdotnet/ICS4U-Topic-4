@@ -10,9 +10,11 @@ namespace ICS4U_Topic_4
     {
         static void Main(string[] args)
         {
+            // Uncomment what you want to check
+
             RandomIntegers();
-            DiceRoller();
-            RandomDecimal();
+            //DiceRoller();
+            //RandomDecimal();
 
             
         }
@@ -79,8 +81,11 @@ namespace ICS4U_Topic_4
 
             randomNumber = generator.Next(minValue, maxValue + 1);
 
-            Console.WriteLine($"Your random number is : {randomNumber}");
+            for (int i = 0; i < 5; i++)
+            {
 
+                Console.WriteLine($"Your random number is : {randomNumber}");
+            }
         }
 
         public static void DiceRoller()
