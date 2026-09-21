@@ -12,11 +12,11 @@ namespace ICS4U_Topic_4
         {
             // Uncomment what you want to check
 
-            RandomIntegers();
+            //RandomIntegers();
             //DiceRoller();
-            //RandomDecimal();
+            RandomDecimal();
 
-            
+
         }
 
         public static void RandomIntegers()
@@ -133,8 +133,8 @@ namespace ICS4U_Topic_4
         public static void RandomDecimal()
         {
             Random generator = new Random();
-            double maxValue = 0;
-            double minValue = 0;
+            int maxValue = 0;
+            int minValue = 0;
 
             int roundValue = 0;
 
@@ -156,7 +156,7 @@ namespace ICS4U_Topic_4
                 Console.Write("Enter the maximum value : ");
 
 
-                if (!Double.TryParse(Console.ReadLine(), out maxValue))
+                if (!Int32.TryParse(Console.ReadLine(), out maxValue))
                 {
                     Console.WriteLine("Invalid input.");
                     continue;
@@ -173,7 +173,7 @@ namespace ICS4U_Topic_4
             while (!minValueValid)
             {
                 Console.Write("Enter the minimum value : ");
-                if (!Double.TryParse(Console.ReadLine(), out minValue))
+                if (!Int32.TryParse(Console.ReadLine(), out minValue))
                 {
                     Console.WriteLine("Invalid input.");
                     continue;
@@ -210,7 +210,7 @@ namespace ICS4U_Topic_4
                 }
             }
 
-            randomNumber = (maxValue - minValue) * generator.NextDouble() + minValue;
+            randomNumber = generator.Next(minValue, maxValue) + generator.NextDouble();
 
             Console.WriteLine($"Your random number is : {Math.Round(randomNumber, roundValue)}");
         }
